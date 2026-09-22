@@ -91,6 +91,14 @@ func loadLocalDotEnv() error {
 			return fmt.Errorf("inspect %s: %w", filename, err)
 		}
 
+		// Stop at the module root so an unrelated .env file in a parent
+		// directory is never loaded.
+		if _, err := os.Stat(filepath.Join(directory, "go.mod")); err == nil {
+			return nil
+		} else if !errors.Is(err, fs.ErrNotExist) {
+			return fmt.Errorf("inspect go.mod: %w", err)
+		}
+
 		parent := filepath.Dir(directory)
 		if parent == directory {
 			return nil
