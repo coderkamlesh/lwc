@@ -15,7 +15,6 @@ func NewRouter(staticFS fs.FS, requestTimeout time.Duration, modules ...func(chi
 	router.Use(middleware.GetHead)
 	router.Use(middleware.Recoverer)
 	router.Use(middleware.Timeout(requestTimeout))
-	router.Use(middleware.Compress(5))
 
 	staticHandler := http.StripPrefix("/static/", http.FileServer(http.FS(staticFS)))
 	router.Handle("/static/*", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
