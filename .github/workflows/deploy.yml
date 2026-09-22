@@ -66,6 +66,10 @@ jobs:
               --image-uri "$IMAGE_URI" \
               --publish \
               --no-cli-pager
+
+            aws lambda wait function-updated-v2 \
+              --function-name "$LAMBDA_FUNCTION_NAME"
+            echo "Lambda function updated: $IMAGE_URI"
           else
             echo "Image pushed successfully: $IMAGE_URI"
             echo "Lambda function does not exist yet: $LAMBDA_FUNCTION_NAME"
