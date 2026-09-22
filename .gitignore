@@ -1,0 +1,23 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+/bin/
+/dist/
+*.exe
+*.test
+*.out
+
+# Local databases and tooling
+*.db
+*.db-shm
+*.db-wal
+.aws-sam/
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,36 @@
+{{ define "todo-list" }}
+<section class="todo-list" id="todo-list" aria-live="polite">
+  <div class="list-heading">
+    <div>
+      <p class="eyebrow"><span class="eyebrow-line"></span> current queue</p>
+      <h2>{{ len .Todos }} <span>item{{ if ne (len .Todos) 1 }}s{{ end }}</span></h2>
+    </div>
+    <span class="list-hint">toggle to complete</span>
+  </div>
+
+  {{ if .Todos }}
+  <ul class="todo-items">
+    {{ range .Todos }}
+    <li class="todo-item {{ if .Completed }}is-complete{{ end }}">
+      <button class="todo-toggle" type="button" aria-label="Toggle {{ .Title }}" hx-post="/todos/{{ .ID }}/toggle" hx-target="#todo-list" hx-swap="outerHTML">
+        <span class="todo-check" aria-hidden="true">{{ if .Completed }}&#10003;{{ end }}</span>
+      </button>
+      <div class="todo-copy">
+        <strong>{{ .Title }}</strong>
+        <span>added {{ .CreatedAt | formatDate }}</span>
+      </div>
+      <span class="todo-state">{{ if .Completed }}done{{ else }}open{{ end }}</span>
+    </li>
+    {{ end }}
+  </ul>
+  {{ else }}
+  <div class="empty-state">
+    <span class="empty-icon">+</span>
+    <div>
+      <strong>The queue is clear.</strong>
+      <p>Add the first task and watch the list update without a full page load.</p>
+    </div>
+  </div>
+  {{ end }}
+</section>
+{{ end }}

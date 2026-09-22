@@ -1,0 +1,22 @@
+{{ define "content" }}
+<section class="page-intro compact-intro">
+  <p class="eyebrow"><span class="eyebrow-line"></span> example feature module</p>
+  <h1>Keep the list<br><em>moving.</em></h1>
+  <p class="hero-lede">This vertical slice shows the default rhythm: a chi route, a focused query layer, an SSR page and small HTMX swaps.</p>
+</section>
+
+<section class="todo-workspace">
+  <form class="todo-form" action="/todos/" method="post" hx-post="/todos/" hx-target="#todo-list" hx-swap="outerHTML" hx-disabled-elt="find button">
+    <label for="todo-title">Add a task</label>
+    <div class="todo-input-row">
+      <input id="todo-title" name="title" type="text" maxlength="200" placeholder="What needs to move forward?" autocomplete="off" required>
+      <button class="button button-primary" type="submit">
+        <span>Queue task</span>
+        <span class="htmx-indicator">Saving...</span>
+      </button>
+    </div>
+  </form>
+
+  {{ template "todo-list" . }}
+</section>
+{{ end }}

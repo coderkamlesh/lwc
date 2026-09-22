@@ -1,0 +1,68 @@
+{{ define "content" }}
+<section class="hero-grid">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-line"></span> reusable application skeleton</p>
+    <h1>Ship the core.<br><em>Keep the seams.</em></h1>
+    <p class="hero-lede">A deliberately boring foundation for fast, server-rendered products. Keep each feature vertical, keep infrastructure replaceable, and let HTML do more of the work.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="/todos/">Open the todo module <span aria-hidden="true">-&gt;</span></a>
+      <a class="text-link" href="#architecture">See the shape <span aria-hidden="true">&#8595;</span></a>
+    </div>
+  </div>
+  <div class="hero-card" aria-label="Runtime summary">
+    <div class="card-topline"><span>runtime profile</span><span class="card-index">01 / 04</span></div>
+    <div class="terminal-window">
+      <div class="terminal-bar"><span></span><span></span><span></span><strong>app/boot</strong></div>
+      <div class="terminal-body">
+        <p><span class="code-muted">$</span> go run ./cmd/app</p>
+        <p class="code-success">&gt; connected to turso</p>
+        <p class="code-success">&gt; routes mounted: 8</p>
+        <p class="code-success">&gt; renderer warmed: 4 templates</p>
+        <p><span class="code-muted">&gt;</span> listening on :8080<span class="cursor"></span></p>
+      </div>
+    </div>
+    <div class="card-footline"><span>cold-start aware</span><span>pure Go driver</span></div>
+  </div>
+</section>
+
+<section class="metrics-grid" aria-label="Starter characteristics">
+  <article class="metric-card">
+    <span class="metric-number">01</span>
+    <strong>One binary</strong>
+    <p>Templates and static assets are embedded at compile time.</p>
+  </article>
+  <article class="metric-card metric-card-accent">
+    <span class="metric-number">02</span>
+    <strong>Zero SPA tax</strong>
+    <p>SSR first. HTMX adds interaction only where the page needs it.</p>
+  </article>
+  <article class="metric-card">
+    <span class="metric-number">03</span>
+    <strong>Module seams</strong>
+    <p>Feature routes, queries and views live together without microservice overhead.</p>
+  </article>
+</section>
+
+<section class="architecture-section" id="architecture">
+  <div class="section-label"><span>02</span><span>architecture notes</span></div>
+  <div class="architecture-grid">
+    <div>
+      <h2>Modular by feature,<br><em>not by ceremony.</em></h2>
+    </div>
+    <div class="architecture-copy">
+      <p>Every feature owns its HTTP routes, application behavior, persistence queries and templates. The composition root wires those modules together once.</p>
+      <div class="shape-list">
+        <div><span class="shape-key">cmd/app</span><span>one entry point for local HTTP and Lambda</span></div>
+        <div><span class="shape-key">internal/platform</span><span>config, database, renderer and server plumbing</span></div>
+        <div><span class="shape-key">internal/modules</span><span>vertical feature slices that can grow independently</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-panel">
+  <span class="quote-mark">&quot;</span>
+  <p>The fastest architecture is the one that makes the next change obvious.</p>
+  <span class="quote-source">starter principle / 2026</span>
+</section>
+{{ end }}

@@ -1,0 +1,37 @@
+{{ define "base" }}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fast modular monolith starter built with Go, Turso, chi and HTMX.">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/static/css/app.css">
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.4/dist/htmx.min.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="Modular Go home">
+        <span class="brand-mark" aria-hidden="true">/</span>
+        <span>modular<span class="brand-accent">.go</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="{{ if eq .Active "home" }}is-active{{ end }}" href="/">Overview</a>
+        <a class="{{ if eq .Active "todos" }}is-active{{ end }}" href="/todos/">Todos</a>
+      </nav>
+      <span class="runtime-badge"><span class="status-dot"></span> lambda-ready</span>
+    </div>
+  </header>
+
+  <main class="shell page-content">
+    {{ template "content" . }}
+  </main>
+
+  <footer class="shell site-footer">
+    <span>Built for small teams with serious shipping velocity.</span>
+    <span class="footer-stack">Go / Turso / chi / HTMX</span>
+  </footer>
+</body>
+</html>
+{{ end }}
