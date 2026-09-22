@@ -10,9 +10,9 @@ permissions:
   contents: read
 
 env:
-  AWS_REGION: ${{ vars.AWS_REGION || 'ap-south-1' }}
-  ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY || 'go-lambda-monolith' }}
-  LAMBDA_FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION_NAME || 'go-lambda-monolith' }}
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: lwc
+  LAMBDA_FUNCTION_NAME: lwc
 
 jobs:
   deploy:

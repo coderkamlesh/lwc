@@ -120,11 +120,11 @@ Optional GitHub repository variables:
 
 ```text
 AWS_REGION=ap-south-1
-ECR_REPOSITORY=go-lambda-monolith
-LAMBDA_FUNCTION_NAME=go-lambda-monolith
+ECR_REPOSITORY=lwc
+LAMBDA_FUNCTION_NAME=lwc
 ```
 
-These are optional GitHub repository variables. Add them at `Settings -> Secrets and variables -> Actions -> Variables -> New repository variable`. Defaults are `ap-south-1`, `go-lambda-monolith`, and `go-lambda-monolith`.
+The workflow currently uses the fixed AWS region `ap-south-1`, ECR repository `lwc`, and Lambda function `lwc`.
 
 The workflow uses `linux/amd64`. If the Lambda function is configured for ARM64, update both the workflow platform and the Lambda architecture together.
 
